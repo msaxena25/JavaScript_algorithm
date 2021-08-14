@@ -11,7 +11,7 @@ const getFormattedString = (input) => {
   }
   return output.join('');
 };
-const backSpaceCompare = (stringOne, stringTwo) => {
+const backSpaceCompareFirstWay = (stringOne, stringTwo) => {
   const s = getFormattedString(stringOne);
   const t = getFormattedString(stringTwo);
   if (s === t) {
@@ -21,9 +21,9 @@ const backSpaceCompare = (stringOne, stringTwo) => {
   }
 };
 
-console.log("backSpaceCompare('aaa##c', '##ac') :", backSpaceCompare('aaa##c', '##ac'));
-console.log("backSpaceCompare('a###c', 'ac') :", backSpaceCompare('a###c', 'ac'));
-console.log("backSpaceCompare('qw#e#e#', '#####q') :", backSpaceCompare('qw#e#e#', '#####q'));
+console.log("backSpaceCompareFirstWay('aaa##c', '##ac') :", backSpaceCompareFirstWay('aaa##c', '##ac'));
+console.log("backSpaceCompareFirstWay('a###c', 'ac') :", backSpaceCompareFirstWay('a###c', 'ac'));
+console.log("backSpaceCompareFirstWay('qw#e#e#', '#####q') :", backSpaceCompareFirstWay('qw#e#e#', '#####q'));
 
 /************OPTIMAL SOLUTION ********************/
 
@@ -32,8 +32,18 @@ console.log("backSpaceCompare('qw#e#e#', '#####q') :", backSpaceCompare('qw#e#e#
  * @param {*} s
  * @param {*} t
  * @returns
+ * We have used here two pointer technique.
+ * First pointer p1 is first string's last index and p2 is second string's last index.
+ * Use while loop till p1 and p2 are greater than or equal to 0.
+ * Note: One # means - we have to move back our pointer by 2 index.
+ * If current char is #, create a variable hashBackCounter with value 2.
+ * Reduce this variable value by 1 while it becomes 0 and reduce pointer as well.
+ * In case after reducing pointer by one, next char is also #, then increment hashBackCounter by 2 again.
+ * Same steps repeat for second string as well.
+ * Now at last check chars at same indices and if they are not same, return false else reduce both p1 and p2 by 1.
+ * Last line return true.
  */
-const backSpaceCompareOptimalWay = (s, t) => {
+const backSpaceCompareSecondWay = (s, t) => {
   let p1 = s.length - 1;
   let p2 = t.length - 1;
 
@@ -73,9 +83,9 @@ const backSpaceCompareOptimalWay = (s, t) => {
  * Memory Usage: 38.8 MB
  */
 
-console.log("backSpaceCompareOptimalWay('aaa##c', '##ac') :", backSpaceCompareOptimalWay('aaa##c', '##ac'));
-console.log("backSpaceCompareOptimalWay('a###c', 'ac') :", backSpaceCompareOptimalWay('a###c', 'ac'));
-console.log("backSpaceCompareOptimalWay('qw#e#e#', '#####q') :", backSpaceCompareOptimalWay('qw#e#e#', '#####q'));
+console.log("backSpaceCompareSecondWay('aaa##c', '##ac') :", backSpaceCompareSecondWay('aaa##c', '##ac'));
+console.log("backSpaceCompareSecondWay('a###c', 'ac') :", backSpaceCompareSecondWay('a###c', 'ac'));
+console.log("backSpaceCompareSecondWay('qw#e#e#', '#####q') :", backSpaceCompareSecondWay('qw#e#e#', '#####q'));
 
 /********************  */
 
@@ -93,7 +103,7 @@ const getHashBackPointer = (input, p) => {
   return p;
 };
 
-const backSpaceCompareOptimalWayThirdWay = (s, t) => {
+const backSpaceCompareThirdWay = (s, t) => {
   let p1 = s.length - 1;
   let p2 = t.length - 1;
 
@@ -110,9 +120,9 @@ const backSpaceCompareOptimalWayThirdWay = (s, t) => {
   return true;
 };
 
-console.log("backSpaceCompareOptimalWayThirdWay('aaa##c', '##ac') :", backSpaceCompareOptimalWayThirdWay('aaa##c', '##ac'));
-console.log("backSpaceCompareOptimalWayThirdWay('a###c', 'ac') :", backSpaceCompareOptimalWayThirdWay('a###c', 'ac'));
-console.log("backSpaceCompareOptimalWayThirdWay('qw#e#e#', '#####q') :", backSpaceCompareOptimalWayThirdWay('qw#e#e#', '#####q'));
+console.log("backSpaceCompareThirdWay('aaa##c', '##ac') :", backSpaceCompareThirdWay('aaa##c', '##ac'));
+console.log("backSpaceCompareThirdWay('a###c', 'ac') :", backSpaceCompareThirdWay('a###c', 'ac'));
+console.log("backSpaceCompareThirdWay('qw#e#e#', '#####q') :", backSpaceCompareThirdWay('qw#e#e#', '#####q'));
 
 /**
  * Runtime: 68 ms
