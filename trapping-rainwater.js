@@ -47,7 +47,7 @@ console.log('trappingRainWaterAreaFirstWay([4,2,0,3,2,5]) :', trappingRainWaterA
  */
 /**
  * Time : O(n^2)
- * SpaceL O(1)
+ * Space: O(1)
  */
 
 const trappingRainWaterAreaSecondWay = (arr) => {
