@@ -302,6 +302,33 @@ function checkAsync() {
 
 //checkAsync();
 
+// Promises are JavaScript objects.  They're documented in the ECMAScript specification.
+// Not part of web apis.
+// Previously in JavaScript we used callbacks to handle asynchronous tasks however callbacks had many problems when it came to handling async tasks that depend on each other and hence promises was born.
+function run() {
+    const promise = new Promise((resolve, reject) => {
+        console.log('1');
+        resolve('success');
+        console.log('2')
+        resolve('success 2'); // will not execute
+        console.log('3')
+    })
+    console.log('4');
+    promise.then(res => {
+        console.log(res);
+    })
+}
+//run();
+
+function run1() {
+
+    var pro = new Promise(resolve => {});
+    console.log(pro)
+
+}
+run1()
+
+
 function arrays() {
     const arr = [1, 3, 3, 9, 12];
 
@@ -378,4 +405,4 @@ function arrays() {
     console.log(arr5.map(item => 10)) // [10, 10]
     console.log(arr5.hasOwnProperty(0), arr5.hasOwnProperty(1)) // > true true
 }
-arrays()
+//arrays()
